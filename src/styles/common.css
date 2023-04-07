@@ -1,9 +1,10 @@
-.outer {
+
+.outer-rotation {
     position: relative;
     display: inline-block;
 }
 
-.inner {
+.inner-rotation {
     font-size: 13px;
     position: absolute;
     top: 50%;

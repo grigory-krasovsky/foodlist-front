@@ -22,20 +22,10 @@ export default function FoodlistNavbar() {
     };
 
     return (
-        <Box sx={{flexGrow: 1}}>
-            <AppBar position="static">
-                <Toolbar sx ={{minHeight: '100%'}}>
-                    <Grid container>
-                        <Grid item xs={6} md={8}>
-                            <Box xs ={6} md={8}>
-                                <Typography>
-                                    Foodlist
-                                </Typography>
-                            </Box>
-                        </Grid>
-                    </Grid>
-                </Toolbar>
-            </AppBar>
-        </Box>
+        <Grid container sx={{backgroundColor: 'primary.main'}}>
+            <Grid xs={12} item height="7vh">
+                navbar
+            </Grid>
+        </Grid>
     );
 }

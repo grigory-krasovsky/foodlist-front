@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import {Button, Grid} from "@mui/material";
 import Typography from "@mui/material/Typography";
-import './index.css'
-import Box from "@mui/material/Box";
+import TargetDay from "../targetDay";
 
 const DAYS = [
     {
@@ -35,19 +34,21 @@ export default function Week() {
 
     return (
         <>
-            <Grid container height={'93.5vh'} direction={'column'}>
+            <Grid container height={'93vh'} direction={'column'} sx ={{backgroundColor: 'orange'}}>
                 {DAYS.map((item, index) => {
                     return targetDay === item ?
-                        <Grid item xs={12} width={"76%"} border={"solid"}>
-
+                        <Grid item xs={12} width={"76%"} >
+                            <TargetDay
+                                dayName = {item.name}
+                            />
                         </Grid>
                         :
-                        <Grid item xs={12} width={"4%"} className={'outer'}>
+                        <Grid item xs={12} width={"4vw"} className={'outer-rotation'}>
                             <Button
                                 color={'success'}
                                 sx={{height: '100%', width: '100%'}}
                                 onClick={() => setTargetDay(item)}>
-                                <Typography className={'rotate inner'}>
+                                <Typography className={'rotate inner-rotation'}>
                                     {item.name}
                                 </Typography>
                             </Button>
