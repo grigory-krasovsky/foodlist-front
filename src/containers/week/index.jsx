@@ -37,7 +37,7 @@ export default function Week() {
         }])
 
     const [targetDay, setTargetDay] = useState(days[0]);
-    const [currentIndex, setCurrentIndex] = useState();
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [leftMotion, setLeftMotion] = useState(false);
 
     const handleDayClick = (item, index) => {
@@ -49,23 +49,23 @@ export default function Week() {
     return (
         <>
             <Grid container height={'93vh'} direction={'column'} sx ={{backgroundColor: 'orange'}}>
-                {days.map((day, index) => {
+                {days.map((day, i) => {
                     return targetDay === day ?
-                        <Grid item xs={12} width={"76%"} >
+                        <Grid item xs={12} width={"76%"} key = {i}>
                             <TargetDay
                                 days = {days}
                                 setDays = {setDays}
-                                index = {index}
+                                index = {i}
                                 leftMotion = {leftMotion}
                             />
                         </Grid>
                         :
-                        <Grid item xs={12} width={"4vw"} className={'outer-rotation'}>
+                        <Grid item xs={12} width={"4vw"} className={'outer-rotation'} key = {i}>
                             <Button
                                 color={'success'}
                                 sx={{height: '100%', width: '100%'}}
                                 onClick={() => {
-                                    handleDayClick(day, index)
+                                    handleDayClick(day, i)
                                 }}>
                                 <Typography className={'rotate inner-rotation'}>
                                     {day.name}
