@@ -1,13 +1,11 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Typography from "@mui/material/Typography";
 import {Button, Grid, Slide} from "@mui/material";
-import Box from "@mui/material/Box";
+import { motion, useAnimationControls } from "framer-motion"
 
 export default function TargetDay(props) {
 
-    const [currentMeal, setCurrentMeal] = useState("Breakfast")
-    const containerRef = React.useRef(null);
-
+    const [currentMeal, setCurrentMeal] = useState("")
 
     const MEALS = [
         {"name": "Breakfast"},
@@ -15,40 +13,74 @@ export default function TargetDay(props) {
         {"name": "Dinner"}
     ]
 
+    const handleChangeMeal = (mealName) => {
+        let newDays = [...props.days];
+        newDays[props.index]["currentMeal"] = mealName;
+        props.setDays(newDays);
+    }
+
     return (
         <>
-            <Grid container direction={'column'} height={'93vh'} sx={{backgroundColor: "lightblue"}}>
-                <Grid item xs={12} width={"4vw"} className={'outer-rotation'} sx={{backgroundColor: "turquoise"}}>
-                    <Typography className={'rotate inner-rotation'}>
-                        {props.dayName}
-                    </Typography>
+            <motion.div
+                initial={props.leftMotion ? {  x: "-5vh" } : {  x: "5vh" }}
+                animate={{ x: 0 }}
+            >
+                <Grid container direction={'column'} height={'93vh'} sx={{backgroundColor: "lightblue"}}>
+                    <Grid item xs={12} width={"4vw"} className={'outer-rotation'} sx={{backgroundColor: "turquoise"}}>
+                        <Typography className={'rotate inner-rotation'}>
+                            {props.days[props.index].name}
+                        </Typography>
 
-                </Grid>
-                <Grid container>
-                    <Grid xs={3} ref={containerRef}>
-                        {MEALS.map((meal) => {
-                            return (
-                                currentMeal !== meal.name ?
-                                    <Grid item height={'5vh'} sx={{backgroundColor: "white"}}>
-                                        <Button
-                                            color={'success'}
-                                            sx={{height: '100%', width: '100%'}}
-                                            onClick={() => setCurrentMeal(meal.name)}
-                                        >
-                                            {meal.name}
-                                        </Button>
-                                    </Grid> :
-                                    <Grid item height={'83vh'} sx={{backgroundColor: "darkorange"}}>
-                                        meal menu
-                                    </Grid>
-
-                            )
-                        })}
+                    </Grid>
+                    <Grid container>
+                        <Grid item xs={3}>
+                            {MEALS.map((meal) => {
+                                return (
+                                    props.days[props.index].currentMeal !== meal.name ?
+                                        <MealTitle
+                                            handleChangeMeal = {handleChangeMeal}
+                                            meal = {meal}
+                                        /> : <MealMenu/>
+                                )
+                            })}
+                        </Grid>
                     </Grid>
                 </Grid>
-            </Grid>
-            }
+            </motion.div>
+
         </>
 
+    )
+}
+
+const MealMenu = () => {
+    return <motion.div
+        // initial={{ opacity: 0 }}
+        // animate={{ opacity: 1 }}
+        // transition={{ duration: 0.5 }}
+    >
+        <Grid item height={'83vh'} sx={{backgroundColor: "darkorange"}}>
+            meal menu
+        </Grid>
+    </motion.div>
+}
+
+const MealTitle = (props) => {
+    return (
+        <motion.div
+            // initial={{ opacity: 0 }}
+            // animate={{ opacity: 1 }}
+            // transition={{ duration: 1 }}
+        >
+            <Grid item height={'5vh'} sx={{backgroundColor: "white"}}>
+                <Button
+                    color={'success'}
+                    sx={{height: '100%', width: '100%'}}
+                    onClick={() => props.handleChangeMeal(props.meal.name)}
+                >
+                    {props.meal.name}
+                </Button>
+            </Grid>
+        </motion.div>
     )
 }

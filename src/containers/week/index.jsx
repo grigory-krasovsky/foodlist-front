@@ -3,43 +3,60 @@ import {Button, Grid} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import TargetDay from "../targetDay";
 
-const DAYS = [
-    {
-        name: "Monday"
-    },
-    {
-        name: "Tuesday"
-    },
-    {
-        name: "Wednesday"
-    },
-    {
-        name: "Thursday"
-    },
-    {
-        name: "Friday"
-    },
-    {
-        name: "Saturday"
-    },
-    {
-        name: "Sunday"
-    }
-]
+
 
 export default function Week() {
 
-    const [targetDay, setTargetDay] = useState(DAYS[0]);
+    const [days, setDays] = useState([{
+        name: "Monday",
+        currentMeal: "Breakfast"
+    },
+        {
+            name: "Tuesday",
+            currentMeal: "Breakfast"
+        },
+        {
+            name: "Wednesday",
+            currentMeal: "Breakfast"
+        },
+        {
+            name: "Thursday",
+            currentMeal: "Breakfast"
+        },
+        {
+            name: "Friday",
+            currentMeal: "Breakfast"
+        },
+        {
+            name: "Saturday",
+            currentMeal: "Breakfast"
+        },
+        {
+            name: "Sunday",
+            currentMeal: "Breakfast"
+        }])
 
+    const [targetDay, setTargetDay] = useState(days[0]);
+    const [currentIndex, setCurrentIndex] = useState();
+    const [leftMotion, setLeftMotion] = useState(false);
+
+    const handleDayClick = (item, index) => {
+        setTargetDay(item)
+        setLeftMotion(currentIndex <= index);
+        setCurrentIndex(index);
+    }
 
     return (
         <>
             <Grid container height={'93vh'} direction={'column'} sx ={{backgroundColor: 'orange'}}>
-                {DAYS.map((item, index) => {
-                    return targetDay === item ?
+                {days.map((day, index) => {
+                    return targetDay === day ?
                         <Grid item xs={12} width={"76%"} >
                             <TargetDay
-                                dayName = {item.name}
+                                days = {days}
+                                setDays = {setDays}
+                                index = {index}
+                                leftMotion = {leftMotion}
                             />
                         </Grid>
                         :
@@ -47,9 +64,11 @@ export default function Week() {
                             <Button
                                 color={'success'}
                                 sx={{height: '100%', width: '100%'}}
-                                onClick={() => setTargetDay(item)}>
+                                onClick={() => {
+                                    handleDayClick(day, index)
+                                }}>
                                 <Typography className={'rotate inner-rotation'}>
-                                    {item.name}
+                                    {day.name}
                                 </Typography>
                             </Button>
                         </Grid>
