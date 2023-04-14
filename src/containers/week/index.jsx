@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Button, Grid} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import TargetDay from "../targetDay";
+import {motion} from "framer-motion"
 
 
 
@@ -60,18 +61,24 @@ export default function Week() {
                             />
                         </Grid>
                         :
-                        <Grid item xs={12} width={"4vw"} className={'outer-rotation'} key = {i}>
-                            <Button
-                                color={'success'}
-                                sx={{height: '100%', width: '100%'}}
-                                onClick={() => {
-                                    handleDayClick(day, i)
-                                }}>
-                                <Typography className={'rotate inner-rotation'}>
-                                    {day.name}
-                                </Typography>
-                            </Button>
-                        </Grid>
+                            <Grid item xs={12} width={"4vw"} className={'outer-rotation'} key = {i}>
+                                <Button
+                                    color={'success'}
+                                    sx={{height: '100%', width: '100%'}}
+                                    onClick={() => {
+                                        handleDayClick(day, i)
+                                    }}>
+                                    <motion.div
+                                        initial={{opacity: 0}}
+                                        animate={{opacity: 1}}
+                                        transition={{delay: 0.5}}>
+                                        <Typography className={'rotate inner-rotation'}>
+                                            {day.name}
+                                        </Typography>
+                                    </motion.div>
+                                </Button>
+                            </Grid>
+
                 })}
             </Grid>
         </>

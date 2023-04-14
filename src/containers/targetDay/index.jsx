@@ -1,11 +1,13 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import {Button, Grid} from "@mui/material";
+import {Button, Grid, List, ListItem, Stack} from "@mui/material";
 import {motion} from "framer-motion"
 import Box from "@mui/material/Box";
 import SearchContainer from "./searchContainer";
 
 export default function TargetDay(props) {
+
+
 
     const MEALS = [
         {"name": "Breakfast"},
@@ -34,12 +36,12 @@ export default function TargetDay(props) {
                                 animate={{opacity: 1}}
                                 transition={{duration: 1}}
                             >
-                            <Typography className={'rotate inner-rotation'}>
-                                {props.days[props.index].name.toUpperCase()}
-                            </Typography>
+                                <Typography className={'rotate inner-rotation'}>
+                                    {props.days[props.index].name.toUpperCase()}
+                                </Typography>
                             </motion.div>
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item xs={3} id={'test4'}>
                             {MEALS.map((meal, i) => {
                                 return (
                                     props.days[props.index].currentMeal !== meal.name ?
@@ -53,13 +55,193 @@ export default function TargetDay(props) {
                                         />
                                 )
                             })}
-                        </Grid><Grid item justifyContent="center"
-                                     alignItems="center"
-                                     display={'flex'}
-                                     sx={{backgroundColor: "brown"}}
-                                     xs={7}>
-                        <SearchContainer/>
-                    </Grid>
+                        </Grid>
+                        <Box
+                            maxWidth={'53vw'}
+                            sx={{backgroundColor: "lightblue"}}>
+
+                            <Box
+                                sx={{
+                                    backgroundColor: 'white',
+                                    m: 2,
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    height: 'fit-content',
+                                    maxHeight: '23vh',
+                                    overflow: "hidden",
+                                    overflowY: "scroll",
+                                    mt: '10vh'
+                                }}
+                            >
+                                <List>
+                                    <ListItem>
+                                        1) Tomatoes
+                                    </ListItem>
+                                    <ListItem>
+                                        2) Eggs
+                                    </ListItem>
+                                    <ListItem>
+                                        3) Tomatoes eggs tomatoes eggs tomatoes
+                                    </ListItem>
+                                    <ListItem>
+                                        4) Tomatoes eggs tomatoes
+                                    </ListItem>
+                                </List>
+
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum
+                                dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum
+                                dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum
+                                dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum
+                                dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum
+                                dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum
+                                dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                d
+                            </Box>
+
+                            <Box
+                                sx={{
+                                    backgroundColor: 'white',
+                                    m: 2,
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    height: 'fit-content',
+                                    maxHeight: '56vh',
+                                    overflow: "hidden",
+                                    overflowY: "scroll",
+                                }}
+                            >
+                                <List>
+                                    <ListItem>
+                                        1) Tomatoes
+                                    </ListItem>
+                                    <ListItem>
+                                        2) Eggs
+                                    </ListItem>
+                                    <ListItem>
+                                        3) Tomatoes eggs tomatoes eggs tomatoes
+                                    </ListItem>
+                                    <ListItem>
+                                        4) Tomatoes eggs tomatoes
+                                    </ListItem>
+                                </List>
+
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum
+                                dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum
+                                dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum
+                                dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum
+                                dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum
+                                dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum
+                                dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                ddLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum
+                                dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                ddLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum
+                                dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                ddLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum
+                                dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                d
+                            </Box>
+
+                        </Box>
                     </Grid>
 
                 </Grid>
@@ -97,7 +279,7 @@ const MealMenu = (props) => {
             <Grid item height={'78vh'} sx={{backgroundColor: "darkorange"}}
                   style={{
                       overflow: "hidden",
-                      overflowY: "scroll" // added scroll
+                      overflowY: "scroll"
                   }}>
 
                 <Box height='100px'
