@@ -6,7 +6,7 @@ import {motion} from "framer-motion"
 
 
 
-export default function Week() {
+export default function Week(props) {
 
     const [days, setDays] = useState([{
         name: "Monday",
@@ -49,6 +49,7 @@ export default function Week() {
 
     return (
         <>
+            {props.navbar}
             <Grid container height={'93vh'} direction={'column'} sx ={{backgroundColor: 'orange'}}>
                 {days.map((day, i) => {
                     return targetDay === day ?
