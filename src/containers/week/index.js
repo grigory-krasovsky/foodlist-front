@@ -3,10 +3,11 @@ import {Button, Grid} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import TargetDay from "../targetDay";
 import {motion} from "framer-motion"
+import FoodlistNavbar from "../navbar";
 
 
 
-export default function Week(props) {
+export default function Week() {
 
     const [days, setDays] = useState([{
         name: "Monday",
@@ -49,7 +50,7 @@ export default function Week(props) {
 
     return (
         <>
-            {props.navbar}
+            <FoodlistNavbar/>
             <Grid container height={'93vh'} direction={'column'} sx ={{backgroundColor: 'orange'}}>
                 {days.map((day, i) => {
                     return targetDay === day ?

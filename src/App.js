@@ -14,7 +14,6 @@ function App() {
     return (
         <>
             <ReactKeycloakProvider authClient={keycloak}>
-
                 <BrowserRouter>
                     <Routes>
                         <Route
@@ -26,9 +25,7 @@ function App() {
                             path="/secured"
                             element={
                                 <PrivateRoute>
-
-                                    <Week
-                                    navbar={<FoodlistNavbar/>}/>
+                                    <Week/>
                                 </PrivateRoute>
                             }
                         />

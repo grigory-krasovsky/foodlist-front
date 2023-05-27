@@ -4,59 +4,47 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import {Button, Grid, Link, Stack} from "@mui/material";
-import { useKeycloak } from "@react-keycloak/web";
+import {useKeycloak} from "@react-keycloak/web";
 
 export default function FoodlistNavbar() {
 
-    const { keycloak, initialized } = useKeycloak();
-    const [auth, setAuth] = React.useState(true);
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const {keycloak} = useKeycloak();
 
-    const handleChange = (event) => {
-        setAuth(event.target.checked);
-    };
-
-    const handleMenu = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    const MyLink = props => <Link to="/" {...props} />
+    const isLoggedIn = keycloak.authenticated === true;
+    const isLoggedOut = keycloak.authenticated === 'undefined' || keycloak.authenticated === false;
 
     return (
         <Grid container sx={{backgroundColor: 'primary.main'}}>
-            <Grid xs={12} item height="7vh">
-                {/*{!keycloak.authenticated && (*/}
-                {/*    <Button*/}
-                {/*        type="button"*/}
-                {/*        className="text-blue-800"*/}
-                {/*        onClick={() => {*/}
-                {/*            keycloak.login();*/}
-                {/*            window.location.href("localhost:3000/secured")*/}
-                {/*        }}*/}
-                {/*    >*/}
-                {/*        Login*/}
-                {/*    </Button>*/}
-                {/*)}*/}
+            <Grid xs={12} item height="7vh" container justifyContent='flex-end'>
 
-                {!!keycloak.authenticated && (
-                    <Button
-                        component={MyLink}
-                        color={'warning'}
+                {isLoggedOut && (
+                    <Box display={'flex'}>
+                        <Button
+                            color={'warning'}
+                            onClick={() => {
+                                keycloak.login();
+                            }}
+                        >
+                            Login
+                        </Button>
+                    </Box>
 
-                        // sx={{height: '100%', width: '100%'}}
-                        onClick={
-                        () => {
-                            keycloak.logout();
+                )}
 
-                        }
-                    }
-                    >
-                        Logout ({keycloak.tokenParsed.preferred_username})
-                    </Button>
+                {isLoggedIn && (
+                    <Box display={'flex'}>
+                        <Button
+                            color={'warning'}
+                            onClick={
+                                () => {
+                                    keycloak.logout();
+
+                                }
+                            }
+                        >
+                            Logout test ({keycloak.tokenParsed.preferred_username})
+                        </Button>
+                    </Box>
                 )}
             </Grid>
         </Grid>

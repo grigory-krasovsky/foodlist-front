@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Typography from "@mui/material/Typography";
 import {Button, Chip, Grid, List, ListItem, Stack} from "@mui/material";
 import {motion} from "framer-motion"
 import Box from "@mui/material/Box";
-import SearchContainer from "./searchContainer";
+import {getCourses} from "../../api/actions";
 
 export default function TargetDay(props) {
 
@@ -27,59 +27,21 @@ export default function TargetDay(props) {
     const [currentMeal, setCurrentMeal] = useState(null);
     const [courseArray, setCourseArray] = useState([
         {
-            id: 'testid',
-            title: "Test course",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n" +
-                "                                        incididunt ut labore et dolore magna aliqua.\n" +
-                "                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n" +
-                "                                        aliquip ex ea\n" +
-                "                                        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit\n" +
-                "                                        esse cillum\n" +
-                "                                        dolore eu fugiat nulla pariatur.\n" +
-                "                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia\n" +
-                "                                        dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n" +
-                "                                        incididunt ut labore et dolore magna aliqua.\n" +
-                "                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n" +
-                "                                        aliquip ex ea\n" +
-                "                                        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit\n" +
-                "                                        esse cillum\n" +
-                "                                        dolore eu fugiat nulla pariatur.\n" +
-                "                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia\n" +
-                "                                        dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n" +
-                "                                        incididunt ut labore et dolore magna aliqua.\n" +
-                "                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n" +
-                "                                        aliquip ex ea\n" +
-                "                                        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit\n" +
-                "                                        esse cillum\n" +
-                "                                        dolore eu fugiat nulla pariatur.\n" +
-                "                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia\n" +
-                "                                        dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n" +
-                "                                        incididunt ut labore et dolore magna aliqua.\n" +
-                "                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n" +
-                "                                        aliquip ex ea\n" +
-                "                                        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit\n" +
-                "                                        esse cillum\n" +
-                "                                        dolore eu fugiat nulla pariatur.\n" +
-                "                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia\n" +
-                "                                        dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n" +
-                "                                        incididunt ut labore et dolore magna aliqua.\n" +
-                "                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n" +
-                "                                        aliquip ex ea\n" +
-                "                                        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit\n" +
-                "                                        esse cillum\n" +
-                "                                        dolore eu fugiat nulla pariatur.\n" +
-                "                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia\n" +
-                "                                        dLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n" +
-                "                                        incididunt ut labore et dolore magna aliqua.\n" +
-                "                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n" +
-                "                                        aliquip ex ea\n" +
-                "                                        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit\n" +
-                "                                        esse cillum\n" +
-                "                                        dolore eu fugiat nulla pariatur.\n" +
-                "                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia\n" +
-                "                                        d"
+            id: "",
+            ingredients: [{id: "", name: "", uuid: ""}],
+            name: "",
+            recipe: {},
+            uuid: ""
         }
     ]);
+
+    useEffect(() => {
+
+        getCourses(setCourseArray);
+
+    }, []);
+
+
     const [recipe, setRecipe] = useState(courseArray[0]);
 
     const handleChangeMeal = (mealName) => {
@@ -214,16 +176,17 @@ export default function TargetDay(props) {
                                     borderRadius: "10px"
                                 }}
                             >
-                                {courseArray.map(course => (
-                                    <List key={course.id}>
-                                        <Chip
-                                            sx={{m: 2}}
-                                            label={course.title}
-                                            onClick={() => handleCourseChipClick(course)}
-                                            size={'medium'}>
+                                <Stack spacing={0} direction={'row'} sx={{flexWrap: 'wrap'}}>
+                                    {courseArray.map(course => (
+                                        <Chip sx={{m: 2}}
+                                              key={course.uuid}
+                                              label={course.name}
+                                              onClick={() => handleCourseChipClick(course)}
+                                              size={'medium'}>
                                         </Chip>
-                                    </List>
-                                ))}
+                                    ))}
+                                </Stack>
+
                             </Box>
 
                         </Box>
