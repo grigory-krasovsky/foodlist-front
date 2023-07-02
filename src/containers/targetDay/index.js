@@ -119,7 +119,7 @@ export default function TargetDay(props) {
                                     <Typography
                                         p={2}
                                         align={'justify'}>
-                                        {currentCourse.text}
+                                        {currentCourse.recipe}
 
                                     </Typography>
 
